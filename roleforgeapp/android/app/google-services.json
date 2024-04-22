@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "644744651389",
+    "project_id": "roleforge-a7959",
+    "storage_bucket": "roleforge-a7959.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644744651389:android:0bc9a98a2bedaee3020714",
+        "android_client_info": {
+          "package_name": "com.roleforgeapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcv7Nd3UOOlQ4sH1VLHzL7wL4JsF8fpZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
