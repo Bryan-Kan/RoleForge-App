@@ -2,9 +2,9 @@ import React, {Component} from "react";
 import { Alert, Text, StyleSheet, View, Image, TextInput, TouchableOpacity } from "react-native";
 import auth from '@react-native-firebase/auth'
 
-export default class App extends Component{
+export default class Cadastro extends Component{
 
-    singUp = () => {
+    cadastro = () => {
 
         auth().createUserWithEmailAndPassword("teste@gmail.com","Password").then(()=>{
             Alert.alert("RoleForge", "Usuario Criado")
@@ -38,9 +38,9 @@ export default class App extends Component{
 
                 <TouchableOpacity
                     style = {styles.botao}
-                    onPress={()=>{this.singUp()}}
+                    onPress={()=>{this.cadastro()}}
                 >
-                    <Text style = {styles.botaoText}>Login</Text>
+                    <Text style = {styles.botaoText}>Cadastrar</Text>
                 </TouchableOpacity>
 
             </View>
