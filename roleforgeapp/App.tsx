@@ -16,7 +16,7 @@ export type StackTypes = NativeStackNavigationProp<StackNavigation>;
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Login'>
+      <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName='Login'>
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Cadastro" component={Cadastro} />
       </Stack.Navigator>

@@ -1,13 +1,38 @@
-import React, {Component} from "react";
-import { Alert, Text, StyleSheet, View, Image, TextInput, TouchableOpacity, Button } from "react-native";
+import React, { useState } from "react";
+import { Alert, Text, View, Image, TextInput, TouchableOpacity, Button } from "react-native";
 import auth from '@react-native-firebase/auth'
 import { useNavigation } from "@react-navigation/native";
 import { StackTypes } from "../../App";
+import styles from "../components/estilo";
 
 const Login = () => {
 
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const navigation = useNavigation<StackTypes>();
+
+    async function singUp () {
+
+        if(email != "" && password != ""){
+
+            await auth().signInWithEmailAndPassword(email, password)
+            .then((res) => {
+                console.log(res)
+                Alert.alert("Sucesso", "Logado com sucesso")
+            })
+            .catch(err => {
+                console.log(err)
+                Alert.alert("Sucesso", err.nativeErrormessage)
+            })
+
+        }else{
+
+            Alert.alert("Roleforge", "É necessario preencher os campos")
+
+        }
+
+    }
 
     return(
         <View style ={styles.container}>
@@ -17,11 +42,15 @@ const Login = () => {
             />
 
             <TextInput 
+                value={email}
+                onChangeText={texto => setEmail(texto)}
                 style={styles.input}
                 placeholder="Digite seu E-mail"
             />
 
             <TextInput
+                value={password}
+                onChangeText={texto => setPassword(texto)}
                 style={styles.input} 
                 secureTextEntry={true}
                 placeholder="Digite sua senha"
@@ -34,61 +63,21 @@ const Login = () => {
                 <Text style = {styles.botaoText}>Login</Text>
             </TouchableOpacity>
 
-            <Button title="Faça o Cadastro" onPress={() => {
-                navigation.navigate("Cadastro");
-            }}/>
+            <Text 
+            onPress={() => {navigation.navigate("Cadastro")}}
+            style= {styles.texLink}>
+                Esqueci minha senha
+            </Text>
+
+            <Text 
+            onPress={() => {navigation.navigate("Cadastro")}}
+            style= {styles.texLink}>
+                Faça o Cadastro
+            </Text>
 
         </View>
     )
 
 }
 
-function singUp () {
-
-    auth().createUserWithEmailAndPassword("teste@gmail.com","Password").then(()=>{
-        Alert.alert("RoleForge", "Usuario Criado")
-    })
-    .catch((err)=>{
-        console.log(err)
-    })
-
-}
-
 export default Login;
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#4682B4',
-    },
-    logo: {
-        width: 150,
-        height: 150,
-        borderRadius: 100,
-    },
-    input: {
-        marginTop: 10,
-        padding: 10,
-        width: 300,
-        backgroundColor: '#fff',
-        fontSize: 16,
-        fontWeight: 'bold',
-        borderRadius: 3,
-    },
-    botao: {
-        width:300,
-        height: 42,
-        backgroundColor: '#3498db',
-        marginTop: 10,
-        borderRadius: 4,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    botaoText: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: '#fff',
-    }
-})

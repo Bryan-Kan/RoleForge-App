@@ -1,86 +1,116 @@
-import React, {Component} from "react";
-import { Alert, Text, StyleSheet, View, Image, TextInput, TouchableOpacity } from "react-native";
+import React, {useState} from "react";
+import { Alert, Text, View, Image, TextInput, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { StackTypes } from "../../App";
 import auth from '@react-native-firebase/auth'
+import styles from "../components/estilo";
 
-export default class Cadastro extends Component{
+const Cadastro = () => {
 
-    cadastro = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
 
-        auth().createUserWithEmailAndPassword("teste@gmail.com","Password").then(()=>{
-            Alert.alert("RoleForge", "Usuario Criado")
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
- 
+    const navigation = useNavigation<StackTypes>();
+
+    // Tamanho mínimo 8 caracteres.
+    // Uma letra minúscula.
+    // Uma letra maiúscula.
+    // Um número.
+    // Um Caractere especial.
+
+    async function cadastrar () {
+
+        if(password === confirmPassword && password.length >= 8){
+
+            try{
+                await auth().createUserWithEmailAndPassword(email,password).then(()=>{
+                    Alert.alert("RoleForge", "Usuario Criado \n Faça o Login")
+    
+                    setEmail("");
+                    setPassword("");
+                    setConfirmPassword("");
+                })
+                navigation.navigate("Login")
+            } catch (error) {
+
+                if (error.code === 'auth/email-already-in-use') {
+
+                  Alert.alert('RoleForge \n ERRO', 'O e-mail já está em uso. Por favor, tente fazer login.');
+
+                    setEmail("");
+                    setPassword("");
+                    setConfirmPassword("");
+
+                } else {
+
+                  Alert.alert('RoleForge \n ERRO', error.nativeErrormessage);
+
+                }
+
+            }
+
+        }else if(password !== confirmPassword && password.length >= 8){
+
+            Alert.alert("RoleForge", "Divergência na senha")
+
+            setPassword("");
+            setConfirmPassword("");
+
+        }else{
+
+            Alert.alert("RoleForge", "A senha deve ter 8 caracteres no minimo")
+
+        }
+    
     }
 
 
+    return(
+        <View style ={styles.container}>
+            <Image 
+                source={require('../assets/Mestre.jpg')}
+                style = {styles.logo}
+            />
 
-    render(){
-        return(
-            <View style ={styles.container}>
-                <Image 
-                    source={require('../assets/Mestre.jpg')}
-                    style = {styles.logo}
-                />
+            <TextInput 
+                value={email}
+                onChangeText={texto => setEmail(texto)}
+                style={styles.input}
+                placeholder="Digite seu E-mail"
+            />
 
-                <TextInput 
-                    style={styles.input}
-                    placeholder="Digite seu E-mail"
-                />
+            <TextInput
+                value={password}
+                onChangeText={texto => setPassword(texto)}
+                style={styles.input} 
+                secureTextEntry={true}
+                placeholder="Digite sua senha"
+            />
 
-                <TextInput
-                    style={styles.input} 
-                    secureTextEntry={true}
-                    placeholder="Digite sua senha"
-                />
+            <TextInput
+                value={confirmPassword}
+                onChangeText={texto => setConfirmPassword(texto)}
+                style={styles.input} 
+                secureTextEntry={true}
+                placeholder="Confirme a sua senha"
+            />
 
-                <TouchableOpacity
-                    style = {styles.botao}
-                    onPress={()=>{this.cadastro()}}
-                >
-                    <Text style = {styles.botaoText}>Cadastrar</Text>
-                </TouchableOpacity>
+            <TouchableOpacity
+                style = {styles.botao}
+                onPress={()=>{cadastrar()}}
+            >
+                <Text style = {styles.botaoText}>Cadastrar</Text>
+            </TouchableOpacity>
 
-            </View>
-        )
-    }
+            <Text 
+            onPress={() => {navigation.navigate("Cadastro")}}
+            style= {styles.texLink}>
+                Esqueci minha senha
+            </Text>
+
+        </View>
+    )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#4682B4',
-    },
-    logo: {
-        width: 150,
-        height: 150,
-        borderRadius: 100,
-    },
-    input: {
-        marginTop: 10,
-        padding: 10,
-        width: 300,
-        backgroundColor: '#fff',
-        fontSize: 16,
-        fontWeight: 'bold',
-        borderRadius: 3,
-    },
-    botao: {
-        width:300,
-        height: 42,
-        backgroundColor: '#3498db',
-        marginTop: 10,
-        borderRadius: 4,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    botaoText: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: '#fff',
-    }
-})
+export default Cadastro;
