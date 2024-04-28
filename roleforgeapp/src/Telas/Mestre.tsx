@@ -2,12 +2,12 @@ import React from "react";
 import { View, Text } from "react-native";
 import styles from "../components/estilo";
 
-const Home = () => {
+const Mestre = () => {
     return(
         <View style={styles.container}>
-            <Text style={styles.texLink}>Home</Text>
+            <Text style={styles.texLink}>Mestre</Text>
         </View>
     );
 }
 
-export default Home;
+export default Mestre;
