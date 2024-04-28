@@ -20,6 +20,7 @@ const Login = () => {
             .then((res) => {
                 console.log(res)
                 Alert.alert("Sucesso", "Logado com sucesso")
+                navigation.navigate("Home")
             })
             .catch(err => {
                 console.log(err)
