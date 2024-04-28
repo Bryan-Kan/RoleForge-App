@@ -19,12 +19,16 @@ const Login = () => {
             await auth().signInWithEmailAndPassword(email, password)
             .then((res) => {
                 console.log(res)
-                Alert.alert("Sucesso", "Logado com sucesso")
                 navigation.navigate("Home")
+
+                setPassword("");
             })
             .catch(err => {
                 console.log(err)
                 Alert.alert("Sucesso", err.nativeErrormessage)
+
+                setEmail("");
+                setPassword("");
             })
 
         }else{

@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "../Telas/Home";
 import Mestre from "../Telas/Mestre";
 import Jogador from "../Telas/Jogador";
+import Icoteste from "./Icones";
 
 const Tab = createBottomTabNavigator();
 
@@ -29,6 +30,13 @@ export default function TabHome () {
             <Tab.Screen
             name="Home"
             component={Home}
+            options={{
+                tabBarLabel: '',
+                tabBarIcon: ({size, color}) => (
+                    <Icoteste/>
+                //     <Entypo name="Home" size={size} color={color}/>
+                )
+            }}
             />
 
             <Tab.Screen name="Mestre" component={Mestre}/>

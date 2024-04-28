@@ -40,6 +40,20 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
         color: '#fff',
+    },
+    textoIcon: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#fff',
+    },
+    Contebotao: {
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+        backgroundColor: '#3eccf5',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: 20,
     }
 })
 
