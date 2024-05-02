@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {NativeStackNavigationProp, createNativeStackNavigator} from '@react-navigation/native-stack';
 import Login from './src/Telas/Login';
 import Cadastro from './src/Telas/Cadastro';
-import TabHome from './src/components/TabHome';
+import Menu from './src/components/Menu';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,7 +21,7 @@ const App = () => {
       <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName='Login'>
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Cadastro" component={Cadastro} />
-        <Stack.Screen name="Home" component={TabHome} />
+        <Stack.Screen name="Home" component={Menu} />
       </Stack.Navigator>
     </NavigationContainer>
   );
