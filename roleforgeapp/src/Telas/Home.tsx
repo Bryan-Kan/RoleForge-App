@@ -1,11 +1,28 @@
 import React from "react";
 import { View, Text } from "react-native";
 import styles from "../components/estilo";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-const Home = () => {
+const Home = ({navigation}) => {
+
     return(
+
         <View style={styles.container}>
-            <Text style={styles.texLink}>Home</Text>
+            <Text style={styles.texLink}>SEJA BEM VINDO</Text>
+
+            <TouchableOpacity
+                style = {styles.botao}
+                onPress={()=>{navigation.navigate('Mestre')}}
+            >
+                <Text style = {styles.botaoText}>ENTRAR COMO MESTRE</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                style = {styles.botao}
+                onPress={()=>{navigation.navigate('Jogador')}}
+            >
+                <Text style = {styles.botaoText}>ENTRAR COMO JOGADOR</Text>
+            </TouchableOpacity>
         </View>
     );
 }
