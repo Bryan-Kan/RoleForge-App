@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
     },
 
-    //LARGURAS
+    //LARGURAS EM PORCENTAGEM
 
     wid_10: {
         width: '10%'        
