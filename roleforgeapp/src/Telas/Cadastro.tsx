@@ -67,7 +67,7 @@ const Cadastro = () => {
 
 
     return(
-        <View style ={styles.container}>
+        <View style ={styles.containerCentro}>
             <Image 
                 source={require('../assets/Mestre.jpg')}
                 style = {styles.logo}

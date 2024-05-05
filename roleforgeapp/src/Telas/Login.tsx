@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert, Text, View, Image, TextInput, TouchableOpacity, Button } from "react-native";
+import { Alert, Text, View, Image, TextInput, TouchableOpacity } from "react-native";
 import auth from '@react-native-firebase/auth'
 import { useNavigation } from "@react-navigation/native";
 import { StackTypes } from "../../App";
@@ -40,7 +40,7 @@ const Login = () => {
     }
 
     return(
-        <View style ={styles.container}>
+        <View style ={styles.containerCentro}>
             <Image 
                 source={require('../assets/Mestre.jpg')}
                 style = {styles.logo}
