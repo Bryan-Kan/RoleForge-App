@@ -1,6 +1,14 @@
 import { StyleSheet } from "react-native"
+import { ScrollView } from "react-native-gesture-handler";
 
 const styles = StyleSheet.create({
+    scrollView: {
+        flex: 1,
+        backgroundColor: "#4682B4",
+        // justifyContent: 'flex-start',
+        // alignItems: 'center',
+    },
+
     container: {
         flex: 1,
         justifyContent: 'flex-start',

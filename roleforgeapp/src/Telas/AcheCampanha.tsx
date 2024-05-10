@@ -1,29 +1,48 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import styles from "../components/estilo";
 import { Button, Card, Paragraph, Title } from "react-native-paper";
 
 const AcheCampanha = () => {
+
+    const dados =[
+        {titulo: "Título da Campanha", descricao: "Descrição da Campanha."},
+        {titulo: "FireFighther", descricao: "Apga o fogo."},
+        {titulo: "Odiséia maluca", descricao: "Palhaços cósmicos"}
+    ]
+
     return(
-        <View style={styles.container}>
-            <Text style={styles.texLink}>Ache uma Campanha</Text>
 
-            <View style={styles.card}>
+        <ScrollView style={styles.scrollView}>
 
-                <Card>
-                    <Card.Content>
-                    <Title style={styles.titleCard}>Título da Campanha</Title>
-                    <Paragraph style={styles.descricaoCard}>Descrição da Campanha.</Paragraph>
-                    </Card.Content>
-                </Card>
+            <View style={styles.container}>
+                <Text style={styles.texLink}>Ache uma Campanha</Text>
 
-                <Button style={styles.buttonCardG} mode="contained" onPress={() => console.log('Pressed')}>
-                    PARTICIPAR
-                </Button>
+                {dados.map((item, index) => (
+
+                    <View style={styles.card} key={index}>
+
+                        <Card>
+                            <Card.Content>
+                            <Title style={styles.titleCard}>{item.titulo}</Title>
+                            <Paragraph style={styles.descricaoCard}>{item.descricao}</Paragraph>
+                            </Card.Content>
+                        </Card>
+
+                        <Button style={styles.buttonCardG} mode="contained" onPress={() => console.log('Pressed')}>
+                            PARTICIPAR
+                        </Button>
+
+                    </View>
+
+
+                ))}
 
             </View>
 
-        </View>
+        </ScrollView>
+        
+
     );
 }
 
