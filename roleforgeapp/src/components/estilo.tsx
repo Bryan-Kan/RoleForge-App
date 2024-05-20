@@ -97,6 +97,41 @@ const styles = StyleSheet.create({
         },
         elevation: 4,
     },
+
+    cardFicha: {
+        backgroundColor: '#FFDEAD',
+        borderRadius: 0,
+        padding: 16,
+        margin: 8,
+        width: "90%",
+        shadowColor: '#000',
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        elevation: 4,
+    },
+
+    cardFichaInter: {
+        backgroundColor: '#FFDEAD',
+        borderRadius: 20,
+        borderColor: "black",
+        borderWidth: 5,
+    },
+
+    fichaInput: {
+        backgroundColor: "#BDB76B",
+        borderRadius: 10,
+        fontSize: 18,
+        height: 40 ,
+        fontWeight: 'bold',
+        borderColor: "black",
+        borderBottomWidth: 3,
+        marginBottom: 5,
+        marginTop: 5,
+    },
     
     titleCard: {
         backgroundColor: "#A9A9A9",
@@ -104,6 +139,15 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontWeight: 'bold',
         marginBottom: 8,
+    },
+
+    subTitleCard: {
+        backgroundColor: "#A9A9A9",
+        borderRadius: 20,
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginBottom: 8,
+        textAlign: "center",
     },
 
     descricaoCard:{
@@ -118,12 +162,14 @@ const styles = StyleSheet.create({
         width: '45%',
         borderRadius: 5,
         backgroundColor: "#4169E1",
+        marginTop: 8,
     },
 
     buttonCardG: {
         borderRadius: 5,
         backgroundColor: "#4169E1",
         marginHorizontal: 20,
+        marginTop: 8,
     },
 
     buttonContainerCard: {
