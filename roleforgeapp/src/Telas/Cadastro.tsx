@@ -31,6 +31,27 @@ const Cadastro = () => {
                     setPassword("");
                     setConfirmPassword("");
                 })
+
+                const criusuario = {name: "", email: email};
+
+                console.log(criusuario)
+
+                const response = await fetch('https://roleforge-api.onrender.com/users/', {
+                    method: 'POST',
+                    headers: {
+                    'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(criusuario),
+                });
+
+                console.log(response)
+
+                if (response.status === 200) {
+                    console.log('Usuário criado com sucesso!');
+                } else {
+                    console.error('Falha ao criar usuário:', response.statusText);
+                }
+
                 navigation.navigate("Login")
             } catch (error) {
 

@@ -4,7 +4,7 @@ import { Card, Title, Paragraph, Button, TextInput } from "react-native-paper";
 import styles from "../components/estilo";
 
 
-const CriaCampanha = () => {
+const EditaCampanha = () => {
 
     const [nomeCampanha, setNomeCampanha] = useState('');
     const [campos, setCampos] = useState<string[]>([]);
@@ -45,7 +45,7 @@ const CriaCampanha = () => {
         <ScrollView style={styles.scrollView}>
 
             <View style={styles.container}>
-                <Text style={styles.texLink}>Crie sua Campanha</Text>
+                <Text style={styles.texLink}>Editar sua Campanha</Text>
                 
                 <View style={styles.cardFicha}>
 
@@ -117,4 +117,4 @@ const CriaCampanha = () => {
     );
 }
 
-export default CriaCampanha;
+export default EditaCampanha;

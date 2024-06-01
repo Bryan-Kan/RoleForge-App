@@ -9,6 +9,7 @@ import CriaCampanha from './src/Telas/CriarCampanha';
 import SuasCampanhas from './src/Telas/SuasCampanhas';
 import AcheCampanha from './src/Telas/AcheCampanha';
 import PartCampanha from './src/Telas/PartCampanha';
+import EditaCampanha from './src/Telas/EditarCampanha';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,17 +25,21 @@ type StackNavigation = {
 export type StackTypes = NativeStackNavigationProp<StackNavigation>;
 
 const App = () => {
+
+  // DADOS DO USUARIO
+  const usuario = [];
+
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName='Home'
+        initialRouteName='Login'
       >
 
         <Stack.Screen name="Login" component={Login}  options={{ headerShown: false }}/>
 
         <Stack.Screen name="Cadastro" component={Cadastro}  options={{ headerShown: false }}/>
 
-        <Stack.Screen name="Home" component={Menu}  options={{ headerShown: false }}/>
+        <Stack.Screen name="Menu" component={Menu}  options={{ headerShown: false }}/>
 
         <Stack.Screen name="Criar Campanha" component={CriaCampanha}/>
 
@@ -43,6 +48,8 @@ const App = () => {
         <Stack.Screen name='Ache uma Campanha' component={AcheCampanha}/>
 
         <Stack.Screen name='Campanhas que Participa' component={PartCampanha}/>
+
+        <Stack.Screen name='Editar Campanha' component={EditaCampanha}/>
 
       </Stack.Navigator>
     </NavigationContainer>

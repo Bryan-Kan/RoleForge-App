@@ -4,6 +4,7 @@ import auth from '@react-native-firebase/auth'
 import { useNavigation } from "@react-navigation/native";
 import { StackTypes } from "../../App";
 import styles from "../components/estilo";
+import axios from 'axios';
 
 const Login = () => {
 
@@ -12,14 +13,26 @@ const Login = () => {
 
     const navigation = useNavigation<StackTypes>();
 
+    async function infoUser() {
+        try {
+          const usuario = await axios.get('https://roleforge-api.onrender.com/users/email/'+ email);
+        //   console.log('Resposta:', usuario.data);
+        } catch (error) {
+          console.error('Erro ao fazer a solicitação:', error);
+        }
+    }
+
     async function singUp () {
 
         if(email != "" && password != ""){
 
             await auth().signInWithEmailAndPassword(email, password)
             .then((res) => {
-                console.log(res)
-                navigation.navigate("Home")
+                // console.log(res)
+
+                infoUser()
+
+                navigation.navigate("Menu")
 
                 setPassword("");
             })

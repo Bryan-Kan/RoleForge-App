@@ -3,7 +3,7 @@ import { View, Text, ScrollView } from "react-native";
 import styles from "../components/estilo";
 import { Button, Card, Paragraph, Title } from "react-native-paper";
 
-const SuasCampanhas = () => {
+const SuasCampanhas = ({navigation}) => {
 
     const dados =[
         {titulo: "Título da Campanha", descricao: "Descrição da Campanha."},
@@ -28,7 +28,7 @@ const SuasCampanhas = () => {
                         </Card>
 
                         <View style={styles.buttonContainerCard}>
-                            <Button style={styles.buttonCard} mode="contained" onPress={() => console.log('Pressed')}>
+                            <Button style={styles.buttonCard} mode="contained" onPress={() => {navigation.navigate('Editar Campanha')}}>
                                 EDITAR
                             </Button>
                             <Button style={styles.buttonCard} mode="contained" onPress={() => console.log('Pressed')}>
