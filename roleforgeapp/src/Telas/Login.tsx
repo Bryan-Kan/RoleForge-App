@@ -5,9 +5,10 @@ import { useNavigation } from "@react-navigation/native";
 import { StackTypes } from "../../App";
 import styles from "../components/estilo";
 import axios from 'axios';
+import { useUser } from "../components/usuario";
 
 const Login = () => {
-
+    const { user, setUser } = useUser();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -16,6 +17,9 @@ const Login = () => {
     async function infoUser() {
         try {
           const usuario = await axios.get('https://roleforge-api.onrender.com/users/email/'+ email);
+          setEmail(usuario.data)
+          setUser({ id: usuario.data["id"], nome: usuario.data["name"], email: usuario.data["email"] });
+        //   console.log(user)
         //   console.log('Resposta:', usuario.data);
         } catch (error) {
           console.error('Erro ao fazer a solicitação:', error);
@@ -38,7 +42,7 @@ const Login = () => {
             })
             .catch(err => {
                 console.log(err)
-                Alert.alert("Sucesso", err.nativeErrormessage)
+                Alert.alert("Erro", err.nativeErrormessage)
 
                 setEmail("");
                 setPassword("");

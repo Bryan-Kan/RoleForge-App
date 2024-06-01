@@ -34,7 +34,7 @@ const Cadastro = () => {
 
                 const criusuario = {name: "", email: email};
 
-                console.log(criusuario)
+                // console.log(criusuario)
 
                 const response = await fetch('https://roleforge-api.onrender.com/users/', {
                     method: 'POST',
@@ -44,7 +44,7 @@ const Cadastro = () => {
                     body: JSON.stringify(criusuario),
                 });
 
-                console.log(response)
+                // console.log(response)
 
                 if (response.status === 200) {
                     console.log('Usuário criado com sucesso!');
