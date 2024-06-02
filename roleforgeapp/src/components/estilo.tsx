@@ -45,6 +45,13 @@ const styles = StyleSheet.create({
         color: '#fff',
     },
 
+    texTitulo: {
+        marginTop: 10,
+        fontSize: 30,
+        fontWeight: 'bold',
+        color: '#fff',
+    },
+
     //BOTÃO
 
     botao: {
@@ -68,6 +75,13 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
         color: '#fff',
+    },
+
+    texDelete: {
+        marginTop: 10,
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#800000',
     },
 
     Contebotao: {
@@ -99,7 +113,7 @@ const styles = StyleSheet.create({
     },
 
     cardFicha: {
-        backgroundColor: '#FFDEAD',
+        backgroundColor: '#fff',
         borderRadius: 0,
         padding: 16,
         margin: 8,
@@ -115,14 +129,14 @@ const styles = StyleSheet.create({
     },
 
     cardFichaInter: {
-        backgroundColor: '#FFDEAD',
+        backgroundColor: '#fff',
         borderRadius: 20,
         borderColor: "black",
         borderWidth: 5,
     },
 
     fichaInput: {
-        backgroundColor: "#BDB76B",
+        backgroundColor: "#87CEEB",
         borderRadius: 10,
         fontSize: 18,
         height: 40 ,
@@ -170,6 +184,12 @@ const styles = StyleSheet.create({
         backgroundColor: "#4169E1",
         marginHorizontal: 20,
         marginTop: 8,
+    },
+
+    buttonText: {
+        marginTop: 10,
+        fontWeight: 'bold',
+        color: '#fff',
     },
 
     buttonContainerCard: {

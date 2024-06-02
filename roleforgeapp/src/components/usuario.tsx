@@ -5,6 +5,7 @@ type User = {
     id: string;
   nome: string;
   email: string;
+  campanha: string;
   // outros campos, se necessário
 };
 

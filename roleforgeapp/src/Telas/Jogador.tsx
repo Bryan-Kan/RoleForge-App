@@ -5,8 +5,8 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Jogador = ({navigation}) => {
     return(
-        <View style={styles.container}>
-            <Text style={styles.texLink}>Jogador</Text>
+        <View style={styles.containerCentro}>
+            <Text style={styles.texTitulo}>Jogador</Text>
 
             <TouchableOpacity
                 style = {styles.botao}

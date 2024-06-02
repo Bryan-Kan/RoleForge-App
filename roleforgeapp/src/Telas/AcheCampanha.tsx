@@ -16,7 +16,7 @@ const AcheCampanha = () => {
         <ScrollView style={styles.scrollView}>
 
             <View style={styles.container}>
-                <Text style={styles.texLink}>Ache uma Campanha</Text>
+                <Text style={styles.texTitulo}>Ache uma Campanha</Text>
 
                 {dados.map((item, index) => (
 

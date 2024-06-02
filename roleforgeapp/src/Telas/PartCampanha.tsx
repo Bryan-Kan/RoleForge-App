@@ -16,7 +16,7 @@ const PartCampanha = () => {
         <ScrollView style={styles.scrollView}>
 
             <View style={styles.container}>
-                <Text style={styles.texLink}>Campanhas que Participa</Text>
+                <Text style={styles.texTitulo}>Campanhas que Participa</Text>
 
                 {dados.map((item, index) => (
 

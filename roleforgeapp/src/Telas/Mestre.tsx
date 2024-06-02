@@ -5,8 +5,8 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Mestre = ({navigation}) => {
     return(
-        <View style={styles.container}>
-            <Text style={styles.texLink}>Crie e Gerencie suas Campanhas</Text>
+        <View style={styles.containerCentro}>
+            <Text style={styles.texTitulo}>Gerencie suas Campanhas</Text>
 
             <TouchableOpacity
                 style = {styles.botao}

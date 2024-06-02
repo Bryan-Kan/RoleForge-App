@@ -1,20 +1,36 @@
 import React, {useState} from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, Alert } from "react-native";
 import { Card, Title, Paragraph, Button, TextInput } from "react-native-paper";
 import styles from "../components/estilo";
+import { useUser } from "../components/usuario";
 
 
-const EditaCampanha = () => {
+const EditarFicha = () => {
 
+    const { user, setUser } = useUser();
     const [nomeCampanha, setNomeCampanha] = useState('');
+    const [descricaoCampanha, setDescricaoCampanha] = useState('');
     const [campos, setCampos] = useState<string[]>([]);
     const [atributos, setAtributos] = useState<string[]>([]);
 
-    const salvarFicha = () => {
-        // Aqui você pode fazer o que quiser com as informações coletadas, como enviá-las para outra página, armazená-las em um banco de dados, etc.
-        console.log('Nome da Campanha:', nomeCampanha);
-        console.log('Campos:', campos);
-        console.log('Atributos:', atributos);
+    async function salvarFicha () {
+
+        const criCampanha = {name: nomeCampanha, master: user?.id, players: [], description: descricaoCampanha, character_sheet: {fields: campos, attributes: atributos}};
+
+        const response = await fetch('https://roleforge-api.onrender.com/campaigns/', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(criCampanha),
+        });
+        Alert.alert("Criado com Sucesso")
+
+        setNomeCampanha('')
+        setDescricaoCampanha('')
+        setCampos([])
+        setAtributos([])
+
     };
 
     const adicionarCampo = () => {
@@ -45,7 +61,7 @@ const EditaCampanha = () => {
         <ScrollView style={styles.scrollView}>
 
             <View style={styles.container}>
-                <Text style={styles.texLink}>Editar sua Campanha</Text>
+                <Text style={styles.texTitulo}>Crie sua Campanha</Text>
                 
                 <View style={styles.cardFicha}>
 
@@ -55,6 +71,10 @@ const EditaCampanha = () => {
                             <Title style={styles.titleCard}>Nome da Campanha</Title>
 
                             <TextInput style={styles.fichaInput} value={nomeCampanha} onChangeText={setNomeCampanha} />
+
+                            <Title style={styles.titleCard}>Descrição da Campanha</Title>
+
+                            <TextInput style={styles.fichaInput} value={descricaoCampanha} onChangeText={setDescricaoCampanha} />
 
                             <Title style={styles.titleCard}>Ficha da Campanha</Title>
                             <Paragraph style={styles.descricaoCard}>{descricaoFicha}</Paragraph>
@@ -72,12 +92,14 @@ const EditaCampanha = () => {
                                             setCampos(newCampos);
                                         }}
                                     />
-                                    <Button onPress={() => removerCampo(index)}>Remover</Button>
+                                    <Button onPress={() => removerCampo(index)}>
+                                        <Text style={styles.texDelete}>Remover</Text>
+                                    </Button>
                                 </View>
                             ))}
 
                             <Button style={styles.buttonCardG} onPress={adicionarCampo}>
-                                Adicionar Campo
+                                <Text style={styles.buttonText}>Adicionar Campo</Text>
                             </Button>
 
                             <Title style={styles.subTitleCard}>ATRIBUTOS</Title>
@@ -93,12 +115,14 @@ const EditaCampanha = () => {
                                         setAtributos(newAtributos);
                                         }}
                                     />
-                                    <Button onPress={() => removerAtributo(index)}>Remover</Button>
+                                    <Button onPress={() => removerAtributo(index)}>
+                                        <Text style={styles.texDelete}>Remover</Text>
+                                    </Button>
                                 </View>
                             ))}
 
                             <Button style={styles.buttonCardG} onPress={adicionarAtributo}>
-                                Adicionar Atributo
+                            <Text style={styles.buttonText}>Adicionar Atributo</Text>
                             </Button>
 
                         </Card.Content>
@@ -117,4 +141,4 @@ const EditaCampanha = () => {
     );
 }
 
-export default EditaCampanha;
+export default EditarFicha;

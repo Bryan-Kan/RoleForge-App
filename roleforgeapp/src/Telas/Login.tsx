@@ -18,7 +18,7 @@ const Login = () => {
         try {
           const usuario = await axios.get('https://roleforge-api.onrender.com/users/email/'+ email);
           setEmail(usuario.data)
-          setUser({ id: usuario.data["id"], nome: usuario.data["name"], email: usuario.data["email"] });
+          setUser({ id: usuario.data["id"], nome: usuario.data["name"], email: usuario.data["email"], campanha: '' });
         //   console.log(user)
         //   console.log('Resposta:', usuario.data);
         } catch (error) {

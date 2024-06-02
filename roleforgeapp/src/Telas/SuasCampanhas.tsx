@@ -1,5 +1,5 @@
 import React, { useState, useEffect  } from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, Alert } from "react-native";
 import styles from "../components/estilo";
 import { Button, Card, Paragraph, Title } from "react-native-paper";
 import axios from "axios";
@@ -20,10 +20,28 @@ const SuasCampanhas = ({navigation}) => {
           "https://roleforge-api.onrender.com/campaigns/master/" + user?.id
         );
         setCampa(response.data);
-        console.log(response.data)
       } catch (error) {
         console.error("Erro ao fazer a solicitação:", error);
       }
+    }
+
+    async function deletar(idCampanha:string, nome:string) {
+
+        try {
+          const response = await axios.delete("https://roleforge-api.onrender.com/campaigns/" + idCampanha);
+          console.log(response)
+          Alert.alert("AVISO",'Campanha "'+ nome +'" deletada com sucesso')
+          minhaCampanha()
+        } catch (error) {
+          console.error("Erro ao fazer a solicitação:", error);
+        }
+
+        console.log(idCampanha)
+                
+    }
+
+    function irCampanha(){
+        navigation.navigate('Editar Ficha')
     }
 
 
@@ -31,7 +49,7 @@ const SuasCampanhas = ({navigation}) => {
         <ScrollView style={styles.scrollView}>
 
             <View style={styles.container}>
-                <Text style={styles.texLink}>Veja suas Campanha</Text>
+                <Text style={styles.texTitulo}>Veja suas Campanhas</Text>
 
                 {campa.map((item, index) => (
                     <View style={styles.card} key={index}>
@@ -44,10 +62,10 @@ const SuasCampanhas = ({navigation}) => {
                         </Card>
 
                         <View style={styles.buttonContainerCard}>
-                            <Button style={styles.buttonCard} mode="contained" onPress={() => {navigation.navigate('Editar Campanha')}}>
-                                EDITAR
+                            <Button style={styles.buttonCard} mode="contained" onPress={() => irCampanha()}>
+                                CAMPANHA
                             </Button>
-                            <Button style={styles.buttonCard} mode="contained" onPress={() => console.log(index)}>
+                            <Button style={styles.buttonCard} mode="contained" onPress={() => deletar(item.id, item.name)}>
                                 APAGAR
                             </Button>
                         </View>

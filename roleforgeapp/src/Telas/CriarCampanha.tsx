@@ -5,7 +5,7 @@ import styles from "../components/estilo";
 import { useUser } from "../components/usuario";
 
 
-const CriaCampanha = (navigation) => {
+const CriaCampanha = () => {
 
     const { user, setUser } = useUser();
     const [nomeCampanha, setNomeCampanha] = useState('');
@@ -61,7 +61,7 @@ const CriaCampanha = (navigation) => {
         <ScrollView style={styles.scrollView}>
 
             <View style={styles.container}>
-                <Text style={styles.texLink}>Crie sua Campanha</Text>
+                <Text style={styles.texTitulo}>Crie sua Campanha</Text>
                 
                 <View style={styles.cardFicha}>
 
@@ -92,12 +92,14 @@ const CriaCampanha = (navigation) => {
                                             setCampos(newCampos);
                                         }}
                                     />
-                                    <Button onPress={() => removerCampo(index)}>Remover</Button>
+                                    <Button onPress={() => removerCampo(index)}>
+                                        <Text style={styles.texDelete}>Remover</Text>
+                                    </Button>
                                 </View>
                             ))}
 
                             <Button style={styles.buttonCardG} onPress={adicionarCampo}>
-                                Adicionar Campo
+                                <Text style={styles.buttonText}>Adicionar Campo</Text>
                             </Button>
 
                             <Title style={styles.subTitleCard}>ATRIBUTOS</Title>
@@ -113,12 +115,14 @@ const CriaCampanha = (navigation) => {
                                         setAtributos(newAtributos);
                                         }}
                                     />
-                                    <Button onPress={() => removerAtributo(index)}>Remover</Button>
+                                    <Button onPress={() => removerAtributo(index)}>
+                                        <Text style={styles.texDelete}>Remover</Text>
+                                    </Button>
                                 </View>
                             ))}
 
                             <Button style={styles.buttonCardG} onPress={adicionarAtributo}>
-                                Adicionar Atributo
+                            <Text style={styles.buttonText}>Adicionar Atributo</Text>
                             </Button>
 
                         </Card.Content>

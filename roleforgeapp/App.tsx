@@ -10,7 +10,7 @@ import CriaCampanha from './src/Telas/CriarCampanha';
 import SuasCampanhas from './src/Telas/SuasCampanhas';
 import AcheCampanha from './src/Telas/AcheCampanha';
 import PartCampanha from './src/Telas/PartCampanha';
-import EditaCampanha from './src/Telas/EditarCampanha';
+import EditarFicha from './src/Telas/EditarFicha';
 
 const Stack = createNativeStackNavigator();
 
@@ -48,7 +48,7 @@ const App = () => {
 
           <Stack.Screen name='Campanhas que Participa' component={PartCampanha}/>
 
-          <Stack.Screen name='Editar Campanha' component={EditaCampanha}/>
+          <Stack.Screen name='Editar Ficha' component={EditarFicha}/>
 
         </Stack.Navigator>
       </NavigationContainer>

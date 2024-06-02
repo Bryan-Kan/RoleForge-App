@@ -7,8 +7,8 @@ const Home = ({navigation}) => {
 
     return(
 
-        <View style={styles.container}>
-            <Text style={styles.texLink}>SEJA BEM VINDO</Text>
+        <View style={styles.containerCentro}>
+            <Text style={styles.texTitulo}>SEJA BEM VINDO</Text>
 
             <TouchableOpacity
                 style = {styles.botao}
