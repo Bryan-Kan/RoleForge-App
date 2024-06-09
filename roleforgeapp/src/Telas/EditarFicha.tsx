@@ -1,37 +1,44 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { View, Text, ScrollView, Alert } from "react-native";
 import { Card, Title, Paragraph, Button, TextInput } from "react-native-paper";
 import styles from "../components/estilo";
 import { useUser } from "../components/usuario";
+import axios from "axios";
 
 
 const EditarFicha = () => {
 
     const { user, setUser } = useUser();
-    const [nomeCampanha, setNomeCampanha] = useState('');
-    const [descricaoCampanha, setDescricaoCampanha] = useState('');
+    const [nomeCampanha, setNomeCampanha] = useState(null);
+    const [descricaoCampanha, setDescricaoCampanha] = useState(null);
     const [campos, setCampos] = useState<string[]>([]);
     const [atributos, setAtributos] = useState<string[]>([]);
 
-    async function salvarFicha () {
+    useEffect(() => {
+        ficha();
+    }, []);
 
-        const criCampanha = {name: nomeCampanha, master: user?.id, players: [], description: descricaoCampanha, character_sheet: {fields: campos, attributes: atributos}};
+    async function ficha() {
+        const response = await axios.get("https://roleforge-api.onrender.com/campaigns/" + user?.campanha);
 
-        const response = await fetch('https://roleforge-api.onrender.com/campaigns/', {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(criCampanha),
-        });
-        Alert.alert("Criado com Sucesso")
+        setNomeCampanha(response.data["name"]);
+        setDescricaoCampanha(response.data["description"]);
+        setCampos(response.data["character_sheet"]["fields"]);
+        setAtributos(response.data["character_sheet"]["attributes"]);
+        
+    }
 
-        setNomeCampanha('')
-        setDescricaoCampanha('')
-        setCampos([])
-        setAtributos([])
+    async function editar () {
+
+        const criCampanha = {name: nomeCampanha, description: descricaoCampanha, character_sheet: {fields: campos, attributes: atributos}};
+
+        const response = await axios.put("https://roleforge-api.onrender.com/campaigns/" + user?.campanha, criCampanha)
+
+        Alert.alert("Editado com Sucesso")
 
     };
+
+    // ADIÇÃO E REMOÇÃO DE CAMPOS/ATRIBUTOS
 
     const adicionarCampo = () => {
       setCampos([...campos, '']);
@@ -52,6 +59,8 @@ const EditarFicha = () => {
       newAtributos.splice(index, 1);
       setAtributos(newAtributos);
     };
+
+    // FIM ADIÇÃO E REMOÇÃO DE CAMPOS/ATRIBUTOS
     
 
     const descricaoFicha = "DESCRIÇÃO: \n *CAMPOS: são areas onde o jogador pode por o nome do personagem, descrição da aparencia, classe, inventario e o que você achar necsessario. \n *ATRIBUTOS: são campos numericos geralmente força, inteligencia, carisma ou o que você quiser colocar.";
@@ -60,81 +69,85 @@ const EditarFicha = () => {
 
         <ScrollView style={styles.scrollView}>
 
-            <View style={styles.container}>
-                <Text style={styles.texTitulo}>Crie sua Campanha</Text>
-                
-                <View style={styles.cardFicha}>
+            {nomeCampanha && (
 
-                    <Card style={styles.cardFichaInter}>
-                        <Card.Content>
+                <View style={styles.container}>
+                    <Text style={styles.texTitulo}>Edite sua Ficha</Text>
 
-                            <Title style={styles.titleCard}>Nome da Campanha</Title>
+                    <View style={styles.cardFicha}>
 
-                            <TextInput style={styles.fichaInput} value={nomeCampanha} onChangeText={setNomeCampanha} />
+                        <Card style={styles.cardFichaInter}>
+                            <Card.Content>
 
-                            <Title style={styles.titleCard}>Descrição da Campanha</Title>
+                                <Title style={styles.titleCard}>Nome da Campanha</Title>
 
-                            <TextInput style={styles.fichaInput} value={descricaoCampanha} onChangeText={setDescricaoCampanha} />
+                                <TextInput style={styles.fichaInput} value={nomeCampanha} onChangeText={setNomeCampanha} />
 
-                            <Title style={styles.titleCard}>Ficha da Campanha</Title>
-                            <Paragraph style={styles.descricaoCard}>{descricaoFicha}</Paragraph>
+                                <Title style={styles.titleCard}>Descrição da Campanha</Title>
 
-                            <Title style={styles.subTitleCard}>CAMPOS</Title>
+                                <TextInput style={styles.fichaInput} value={descricaoCampanha} onChangeText={setDescricaoCampanha} />
 
-                            {campos.map((campo, index) => (
-                                <View key={index}>
-                                    <TextInput
-                                        style={[styles.fichaInput]}
-                                        value={campo}
-                                        onChangeText={(text) => {
-                                            const newCampos = [...campos];
-                                            newCampos[index] = text;
-                                            setCampos(newCampos);
-                                        }}
-                                    />
-                                    <Button onPress={() => removerCampo(index)}>
-                                        <Text style={styles.texDelete}>Remover</Text>
-                                    </Button>
-                                </View>
-                            ))}
+                                <Title style={styles.titleCard}>Ficha da Campanha</Title>
+                                <Paragraph style={styles.descricaoCard}>{descricaoFicha}</Paragraph>
 
-                            <Button style={styles.buttonCardG} onPress={adicionarCampo}>
-                                <Text style={styles.buttonText}>Adicionar Campo</Text>
-                            </Button>
+                                <Title style={styles.subTitleCard}>CAMPOS</Title>
 
-                            <Title style={styles.subTitleCard}>ATRIBUTOS</Title>
+                                {campos.map((campo, index) => (
+                                    <View key={index}>
+                                        <TextInput
+                                            style={[styles.fichaInput]}
+                                            value={campo}
+                                            onChangeText={(text) => {
+                                                const newCampos = [...campos];
+                                                newCampos[index] = text;
+                                                setCampos(newCampos);
+                                            }}
+                                        />
+                                        <Button onPress={() => removerCampo(index)}>
+                                            <Text style={styles.texDelete}>Remover</Text>
+                                        </Button>
+                                    </View>
+                                ))}
 
-                            {atributos.map((atributo, index) => (
-                                <View key={index}>
-                                    <TextInput
-                                        style={[styles.fichaInput]}
-                                        value={atributo}
-                                        onChangeText={(text) => {
-                                        const newAtributos = [...atributos];
-                                        newAtributos[index] = text;
-                                        setAtributos(newAtributos);
-                                        }}
-                                    />
-                                    <Button onPress={() => removerAtributo(index)}>
-                                        <Text style={styles.texDelete}>Remover</Text>
-                                    </Button>
-                                </View>
-                            ))}
+                                <Button style={styles.buttonCardG} onPress={adicionarCampo}>
+                                    <Text style={styles.buttonText}>Adicionar Campo</Text>
+                                </Button>
 
-                            <Button style={styles.buttonCardG} onPress={adicionarAtributo}>
-                            <Text style={styles.buttonText}>Adicionar Atributo</Text>
-                            </Button>
+                                <Title style={styles.subTitleCard}>ATRIBUTOS</Title>
 
-                        </Card.Content>
-                    </Card>
+                                {atributos.map((atributo, index) => (
+                                    <View key={index}>
+                                        <TextInput
+                                            style={[styles.fichaInput]}
+                                            value={atributo}
+                                            onChangeText={(text) => {
+                                            const newAtributos = [...atributos];
+                                            newAtributos[index] = text;
+                                            setAtributos(newAtributos);
+                                            }}
+                                        />
+                                        <Button onPress={() => removerAtributo(index)}>
+                                            <Text style={styles.texDelete}>Remover</Text>
+                                        </Button>
+                                    </View>
+                                ))}
 
-                    <Button style={styles.buttonCardG} mode="contained" onPress={salvarFicha}>
-                        Salvar
-                    </Button>
+                                <Button style={styles.buttonCardG} onPress={adicionarAtributo}>
+                                <Text style={styles.buttonText}>Adicionar Atributo</Text>
+                                </Button>
+
+                            </Card.Content>
+                        </Card>
+
+                        <Button style={styles.buttonCardG} mode="contained" onPress={editar}>
+                            EDITAR
+                        </Button>
+
+                    </View>
 
                 </View>
 
-            </View>
+            )}
 
         </ScrollView>
 

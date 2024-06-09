@@ -1,15 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, ScrollView } from "react-native";
 import styles from "../components/estilo";
 import { Button, Card, Paragraph, Title } from "react-native-paper";
+import axios from "axios";
+import { useUser } from "../components/usuario";
 
-const PartCampanha = () => {
+const PartCampanha = ({navigation}) => {
+    
+    const { user, setUser } = useUser();
+    const [dados, setDados] = useState([]);
 
-    const dados =[
-        {titulo: "Título da Campanha", descricao: "Descrição da Campanha."},
-        {titulo: "FireFighther", descricao: "Apga o fogo."},
-        {titulo: "Odiséia maluca", descricao: "Palhaços cósmicos"}
-    ]
+    useEffect(() => {
+        Campanha();
+    }, []);
+
+
+    async function Campanha() {
+
+        const campanha = await axios.get("https://roleforge-api.onrender.com/campaigns/player/" + user?.id);
+
+        setDados(campanha.data)
+        
+    }
+
+    function entrar (idcamp:string) {
+
+        // const registro = user;
+        // setUser({id: registro?.id, nome: registro?.nome, email: registro?.email,campanha: idcamp})
+        // navigation.navigate('Campanha Mestre')
+
+        console.log("Entrar: " + idcamp)
+
+    }
+
 
     return(
 
@@ -24,17 +47,17 @@ const PartCampanha = () => {
 
                         <Card>
                             <Card.Content>
-                            <Title style={styles.titleCard}>{item.titulo}</Title>
-                            <Paragraph style={styles.descricaoCard}>{item.descricao}</Paragraph>
+                            <Title style={styles.titleCard}>{item.name}</Title>
+                            <Paragraph style={styles.descricaoCard}>{item.description}</Paragraph>
                             </Card.Content>
                         </Card>
 
                         <View style={styles.buttonContainerCard}>
 
-                            <Button style={styles.buttonCard} mode="contained" onPress={() => console.log('Pressed')}>
+                            <Button style={styles.buttonCard} mode="contained" onPress={() => entrar(item.id)}>
                                 ENTRAR
                             </Button>
-                            <Button style={styles.buttonCard} mode="contained" onPress={() => console.log('Pressed')}>
+                            <Button style={styles.buttonCard} mode="contained" onPress={() => console.log(item.id)}>
                                 ABANDONAR
                             </Button>
 

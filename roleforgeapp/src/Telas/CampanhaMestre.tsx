@@ -5,13 +5,13 @@ import { Button, Card, Paragraph, Title } from "react-native-paper";
 import axios from "axios";
 import { useUser } from "../components/usuario";
 
-const CampanhaMestre = () => {
+const CampanhaMestre = ({navigation}) => {
 
     const { user, setUser } = useUser();
-    const [inf, setInf] = useState();
+    const [inf, setInf] = useState(null);
 
     useEffect(() => {
-        minhaCampanha();
+      minhaCampanha();
     }, []);
     
     async function minhaCampanha() {
@@ -19,8 +19,8 @@ const CampanhaMestre = () => {
         const response = await axios.get(
           "https://roleforge-api.onrender.com/campaigns/" + user?.campanha
         );
+        console.log(response.data["players"])
         setInf(response.data)
-        console.log(inf);
       } catch (error) {
         console.error("Erro ao fazer a solicitação:", error);
       }
@@ -28,29 +28,38 @@ const CampanhaMestre = () => {
 
     return(
 
-        <ScrollView style={styles.scrollView}>
+      <ScrollView style={styles.scrollView}>
 
-            <View style={styles.container}>
-                <Text style={styles.texTitulo}>Funções do Mestre</Text>
+        {inf &&(
 
-                <View style={styles.card}>
+          <View style={styles.container}>
+            <Text style={styles.texTitulo}>{inf.name}</Text>
 
-                    <Card>
-                        <Card.Content>
-                        <Title style={styles.titleCard}>Titulo</Title>
-                        <Paragraph style={styles.descricaoCard}>Descrição</Paragraph>
-                        </Card.Content>
-                    </Card>
+            <View style={styles.card}>
 
-                    <Button style={styles.buttonCardG} mode="contained" onPress={() => console.log(user?.campanha)}>
-                        PARTICIPAR
-                    </Button>
+              <Card>
+                <Card.Content>
+                <Title style={styles.titleCard}>Descrição</Title>
+                <Paragraph style={styles.descricaoCard}>{inf.description}</Paragraph>
+                <Title style={styles.titleCard}>Jogadores</Title>
+                <Paragraph style={styles.descricaoCard}>{
+                inf.players.map((item, index) => (
+                  item.name                  
+                ))
+                }</Paragraph>
+                </Card.Content>
+              </Card>
 
-                </View>
+              <Button style={styles.buttonCardG} mode="contained" onPress={() => navigation.navigate('Editar Ficha')}>
+                EDITAR FICHA
+              </Button>
 
             </View>
 
-        </ScrollView>
+          </View>
+
+        )}
+      </ScrollView>
         
 
     );
