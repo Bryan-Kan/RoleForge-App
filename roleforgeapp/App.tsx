@@ -13,6 +13,8 @@ import PartCampanha from './src/Telas/PartCampanha';
 import EditarFicha from './src/Telas/EditarFicha';
 import CampanhaMestre from './src/Telas/CampanhaMestre';
 import CriaPersonagem from './src/Telas/CriaPersonagem';
+import CampanhaJogador from './src/Telas/CampanhaJogador';
+import ListaPersonagem from './src/Telas/ListaPersonagem';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +28,8 @@ type StackNavigation = {
   EditarFicha: undefined,
   CampanhaMestre: undefined,
   CriaPersonagem: undefined,
+  CampanhaJogador: undefined,
+  ListaPersonagem: undefined,
 };
 
 export type StackTypes = NativeStackNavigationProp<StackNavigation>;
@@ -58,6 +62,10 @@ const App = () => {
           <Stack.Screen name='Campanha Mestre' component={CampanhaMestre}/>
 
           <Stack.Screen name='Criar Personagem' component={CriaPersonagem}/>
+
+          <Stack.Screen name='Campanha Jogador' component={CampanhaJogador}/>
+
+          <Stack.Screen name='Lista de Personagem' component={ListaPersonagem}/>
 
         </Stack.Navigator>
       </NavigationContainer>

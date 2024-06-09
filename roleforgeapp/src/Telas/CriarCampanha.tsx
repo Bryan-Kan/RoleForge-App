@@ -54,7 +54,7 @@ const CriaCampanha = () => {
     };
     
 
-    const descricaoFicha = "DESCRIÇÃO: \n *CAMPOS: são areas onde o jogador pode por o nome do personagem, descrição da aparencia, classe, inventario e o que você achar necsessario. \n *ATRIBUTOS: são campos numericos geralmente força, inteligencia, carisma ou o que você quiser colocar.";
+    const descricaoFicha = "DESCRIÇÃO: \n \n *CAMPOS: são areas onde o jogador pode por o nome do personagem, descrição da aparencia, classe, inventario e o que você achar necsessario. \n \n RECOMENDAÇÃO: Colocar o nome e a descrição comos os primeiros campos. \n \n *ATRIBUTOS: são campos numericos geralmente força, inteligencia, carisma ou o que você quiser colocar.";
 
     return(
 

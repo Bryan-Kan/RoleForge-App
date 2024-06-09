@@ -22,6 +22,13 @@ const Jogador = ({navigation}) => {
                 <Text style = {styles.botaoText}>CAMPANHAS QUE PARTICIPA</Text>
             </TouchableOpacity>
 
+            <TouchableOpacity
+                style = {styles.botao}
+                onPress={()=>{navigation.navigate('Lista de Personagem')}}
+            >
+                <Text style = {styles.botaoText}>PERSONAGENS</Text>
+            </TouchableOpacity>
+
         </View>
     );
 }

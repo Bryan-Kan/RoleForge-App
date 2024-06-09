@@ -5,16 +5,16 @@ import { Button, Card, Paragraph, Title } from "react-native-paper";
 import axios from "axios";
 import { useUser } from "../components/usuario";
 
-const CampanhaMestre = ({navigation}) => {
+const CampanhaJogador = ({navigation}) => {
 
     const { user, setUser } = useUser();
     const [inf, setInf] = useState(null);
 
     useEffect(() => {
-      minhaCampanha();
+      campanha();
     }, []);
     
-    async function minhaCampanha() {
+    async function campanha() {
       try {
         const response = await axios.get(
           "https://roleforge-api.onrender.com/campaigns/" + user?.campanha
@@ -49,8 +49,8 @@ const CampanhaMestre = ({navigation}) => {
                 </Card.Content>
               </Card>
 
-              <Button style={styles.buttonCardG} mode="contained" onPress={() => navigation.navigate('Editar Ficha')}>
-                EDITAR FICHA
+              <Button style={styles.buttonCardG} mode="contained" onPress={() => navigation.navigate('Criar Personagem')}>
+                CRIAR PERSONAGEM
               </Button>
 
             </View>
@@ -64,4 +64,4 @@ const CampanhaMestre = ({navigation}) => {
     );
 }
 
-export default CampanhaMestre;
+export default CampanhaJogador;

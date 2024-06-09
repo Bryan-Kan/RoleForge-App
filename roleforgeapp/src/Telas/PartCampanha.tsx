@@ -25,11 +25,9 @@ const PartCampanha = ({navigation}) => {
 
     function entrar (idcamp:string) {
 
-        // const registro = user;
-        // setUser({id: registro?.id, nome: registro?.nome, email: registro?.email,campanha: idcamp})
-        // navigation.navigate('Campanha Mestre')
-
-        console.log("Entrar: " + idcamp)
+        const registro = user;
+        setUser({id: registro?.id, nome: registro?.nome, email: registro?.email,campanha: idcamp})
+        navigation.navigate('Campanha Jogador')
 
     }
 
@@ -52,16 +50,13 @@ const PartCampanha = ({navigation}) => {
                             </Card.Content>
                         </Card>
 
-                        <View style={styles.buttonContainerCard}>
+                        <Button style={styles.buttonCardG} mode="contained" onPress={() => entrar(item.id)}>
+                            VER CAMPANHA
+                        </Button>
 
-                            <Button style={styles.buttonCard} mode="contained" onPress={() => entrar(item.id)}>
-                                ENTRAR
-                            </Button>
-                            <Button style={styles.buttonCard} mode="contained" onPress={() => console.log(item.id)}>
-                                ABANDONAR
-                            </Button>
-
-                        </View>
+                        <Button style={styles.buttonCardG} mode="contained" onPress={() => console.log(item.id)}>
+                            ABANDONAR CAMPANHA
+                        </Button>
 
                     </View>
 

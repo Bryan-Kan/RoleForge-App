@@ -27,13 +27,13 @@ const CriaPersonagem = () => {
 
         let atri:Array = []
 
-        for (let index = 0; index < response.data['character_sheet']['fields'].length; index++) {
+        for (let i = 0; i < response.data['character_sheet']['fields'].length; i++) {
 
             cam += ' '
 
         }
 
-        for (let index = 0; index < response.data['character_sheet']['attributes'].length; index++) {
+        for (let i = 0; i < response.data['character_sheet']['attributes'].length; i++) {
 
             atri += ' '
 
@@ -50,19 +50,18 @@ const CriaPersonagem = () => {
 
     async function enviaPersonagem() {
 
-        let cont = 0;
         let camp = {};
         let atri = {};
 
-        for (let index = 0; index < campos.length; index++){
+        for (let i = 0; i < campos.length; i++){
 
-            camp[indcamp[index]] = campos[index]
+            camp[indcamp[i]] = campos[i]
 
         }
 
-        for (let index = 0; index < atributos.length; index++){
+        for (let i = 0; i < atributos.length; i++){
 
-            atri[indatri[index]] = atributos[index]
+            atri[indatri[i]] = atributos[i]
 
         }
 
@@ -70,47 +69,21 @@ const CriaPersonagem = () => {
 
         const response = await axios.post('https://roleforge-api.onrender.com/characters/', dados)
 
-        for (let index = 0; index < campos.length; index++){
+        for (let i = 0; i < campos.length; i++){
 
-            campos[index] = ' '
-
-        }
-
-        for (let index = 0; index < atributos.length; index++){
-
-            atributos[index] = ' '
+            campos[i] = ' '
 
         }
 
-        for (let index = 0; index < playe.length; index++){
+        for (let i = 0; i < atributos.length; i++){
 
-            if(playe[index] == user?.id){
-
-                cont += 1;
-
-            }
+            atributos[i] = ' '
 
         }
 
-        console.log("cont: " + cont)
+        Alert.alert("SUCESSO","Personagem criado com sucesso")
 
-        if(cont == 0){
-
-            let arrplay:Array = [];
-
-            arrplay = playe;
-
-            arrplay.push(user?.id);
-
-            const addPlayer = {players: arrplay};
-
-            await axios.put('https://roleforge-api.onrender.com/campaigns/' + user?.campanha, addPlayer)
-
-        }
-
-        Alert.alert("Criado com Sucesso")
-
-        // console.log(dados)
+        console.log(dados)
     }
 
 
@@ -130,17 +103,17 @@ const CriaPersonagem = () => {
 
                             {(() => {
                                 const campoViews = [];
-                                for (let index = 0; index < campos.length; index++) {
+                                for (let i = 0; i < campos.length; i++) {
                                     campoViews.push(
-                                        <View key={index}>
-                                            <Paragraph style={styles.subTitleCard}>{indcamp[index]}</Paragraph>
+                                        <View key={i}>
+                                            <Paragraph style={styles.subTitleCard}>{indcamp[i]}</Paragraph>
                                             <TextInput
                                                 style={[styles.fichaInput]}
                                                 multiline={true}
-                                                value={campos[index]}
+                                                value={campos[i]}
                                                 onChangeText={(text) => {
                                                     const newCampos = [...campos];
-                                                    newCampos[index] = text;
+                                                    newCampos[i] = text;
                                                     setCampos(newCampos);
                                                 }}
                                             />
@@ -154,17 +127,17 @@ const CriaPersonagem = () => {
 
                             {(() => {
                                 const atributoViews = [];
-                                for (let index = 0; index < atributos.length; index++) {
+                                for (let i = 0; i < atributos.length; i++) {
                                     atributoViews.push(
-                                        <View key={index}>
-                                            <Paragraph style={styles.subTitleCard}>{indatri[index]}</Paragraph>
+                                        <View key={i}>
+                                            <Paragraph style={styles.subTitleCard}>{indatri[i]}</Paragraph>
                                             <TextInput
                                                 style={[styles.fichaInput]}
                                                 multiline={true}
-                                                value={atributos[index]}
+                                                value={atributos[i]}
                                                 onChangeText={(text) => {
                                                     const newAtributos = [...atributos];
-                                                    newAtributos[index] = text;
+                                                    newAtributos[i] = text;
                                                     setAtributos(newAtributos);
                                                 }}
                                             />
