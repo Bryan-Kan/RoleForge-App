@@ -9,7 +9,6 @@ import axios from "axios";
 const CriaPersonagem = () => {
 
     const { user, setUser } = useUser();
-    const [playe, setPlaye] = useState<string[]>([]);
     const [campos, setCampos] = useState<string[]>([]);
     const [indcamp, setIndcamp] = useState<string[]>([]);
     const [atributos, setAtributos] = useState<string[]>([]);
@@ -43,8 +42,6 @@ const CriaPersonagem = () => {
         setAtributos(atri)
         setIndcamp(response.data['character_sheet']['fields'])
         setIndatri(response.data['character_sheet']['attributes'])
-
-        setPlaye(response.data['players'])
 
     }
 

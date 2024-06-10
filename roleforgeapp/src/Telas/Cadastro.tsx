@@ -7,6 +7,7 @@ import styles from "../components/estilo";
 
 const Cadastro = () => {
 
+    const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -24,6 +25,8 @@ const Cadastro = () => {
         if(password === confirmPassword && password.length >= 8){
 
             try{
+
+                // FIREBASE
                 await auth().createUserWithEmailAndPassword(email,password).then(()=>{
                     Alert.alert("RoleForge", "Usuario Criado \n Faça o Login")
     
@@ -32,7 +35,7 @@ const Cadastro = () => {
                     setConfirmPassword("");
                 })
 
-                const criusuario = {name: "", email: email};
+                const criusuario = {name: nome, email: email};
 
                 // console.log(criusuario)
 
@@ -95,6 +98,13 @@ const Cadastro = () => {
             />
 
             <TextInput 
+                value={nome}
+                onChangeText={texto => setNome(texto)}
+                style={styles.input}
+                placeholder="Digite seu Nome"
+            />
+
+            <TextInput 
                 value={email}
                 onChangeText={texto => setEmail(texto)}
                 style={styles.input}
@@ -121,14 +131,14 @@ const Cadastro = () => {
                 style = {styles.botao}
                 onPress={()=>{cadastrar()}}
             >
-                <Text style = {styles.botaoText}>Cadastrar</Text>
+                <Text style = {styles.botaoText}>CADASTRAR</Text>
             </TouchableOpacity>
 
-            <Text 
+            {/* <Text 
             onPress={() => {navigation.navigate("Cadastro")}}
             style= {styles.texLink}>
                 Esqueci minha senha
-            </Text>
+            </Text> */}
 
         </View>
     )

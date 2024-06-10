@@ -23,6 +23,13 @@ const Home = ({navigation}) => {
             >
                 <Text style = {styles.botaoText}>ENTRAR COMO JOGADOR</Text>
             </TouchableOpacity>
+
+            <TouchableOpacity
+                style = {styles.botao}
+                onPress={()=>{navigation.navigate('Mudar o Nome')}}
+            >
+                <Text style = {styles.botaoText}>MUDAR O NOME</Text>
+            </TouchableOpacity>
         </View>
     );
 }

@@ -43,7 +43,7 @@ const CampanhaJogador = ({navigation}) => {
                 <Title style={styles.titleCard}>Jogadores</Title>
                 <Paragraph style={styles.descricaoCard}>{
                 inf.players.map((item, index) => (
-                  item.name                  
+                  item.name                
                 ))
                 }</Paragraph>
                 </Card.Content>

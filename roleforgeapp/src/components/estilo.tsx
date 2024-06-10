@@ -172,6 +172,16 @@ const styles = StyleSheet.create({
         marginBottom: 8,
     },
 
+    textoCard:{
+        minHeight: 30,
+        backgroundColor: "#A9A9A9",
+        borderRadius: 0,
+        fontSize: 20,
+        marginBottom: 8,
+        color: "black",
+    },
+
+
     buttonCard: {
         width: '45%',
         borderRadius: 5,

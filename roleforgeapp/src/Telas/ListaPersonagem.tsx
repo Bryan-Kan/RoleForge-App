@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, Alert } from "react-native";
 import styles from "../components/estilo";
 import { Button, Card, Paragraph, Title } from "react-native-paper";
 import axios from "axios";
@@ -9,7 +9,6 @@ const ListaPersonagem = ({navigation}) => {
     
     const { user, setUser } = useUser();
     const [dados, setDados] = useState([]);
-    let cont:Array = []
 
     useEffect(() => {
         Campanha();
@@ -24,6 +23,32 @@ const ListaPersonagem = ({navigation}) => {
 
     }
 
+    function abrirFicha (idpersonagem:string) {
+
+        const registro = user;
+        setUser({id: registro?.id, nome: registro?.nome, email: registro?.email,campanha: idpersonagem})
+        navigation.navigate('Ficha do Personagem')
+
+    }
+
+    function editarPersonagem (idpersonagem:string) {
+
+        const registro = user;
+        setUser({id: registro?.id, nome: registro?.nome, email: registro?.email,campanha: idpersonagem})
+        navigation.navigate('Editar o Personagem')
+
+    }
+
+    async function deletar(idpersonagem:string) {
+
+        const response = await axios.delete("https://roleforge-api.onrender.com/characters/" + idpersonagem);
+
+        Alert.alert("SUCESSO", "Personagem deletado com sucesso")
+
+        Campanha()
+        
+    }
+
 
     return(
 
@@ -33,7 +58,7 @@ const ListaPersonagem = ({navigation}) => {
 
                 {dados.map((item, index) => (
 
-                    <View style={styles.card}>
+                    <View style={styles.card} key={index}>
 
                         <Card>
                             <Card.Content>
@@ -42,8 +67,15 @@ const ListaPersonagem = ({navigation}) => {
                             </Card.Content>
                         </Card>
 
-                        <Button style={styles.buttonCardG} mode="contained" onPress={() => console.log("teste")}>
+                        <Button style={styles.buttonCardG} mode="contained" onPress={() => abrirFicha(item.id)}>
                             ABRIR FICHA
+                        </Button>
+                        <Button style={styles.buttonCardG} mode="contained" onPress={() => editarPersonagem(item.id)}>
+                            EDITAR FICHA
+                        </Button>
+
+                        <Button style={styles.buttonCardG} mode="contained" onPress={() => deletar(item.id)}>
+                            DELETAR
                         </Button>
 
                     </View>

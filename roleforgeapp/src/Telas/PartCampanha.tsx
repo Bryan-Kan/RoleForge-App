@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, Alert } from "react-native";
 import styles from "../components/estilo";
 import { Button, Card, Paragraph, Title } from "react-native-paper";
 import axios from "axios";
@@ -31,13 +31,48 @@ const PartCampanha = ({navigation}) => {
 
     }
 
+    async function abandonar (idcamp:string){
+
+        let dado:Array = []
+        let aux:array = []
+
+        const response = await axios.get("https://roleforge-api.onrender.com/campaigns/" + idcamp);
+
+        dado = response.data["players"]
+
+        for (let i = 0; i < dado.length; i++) {
+            if (dado[i]['id'] != user?.id) {
+                aux[i] = dado[i]['id']                
+            }
+        }
+
+        let players = {"players": aux}
+
+        // if (aux.length == 0) {
+
+        //     players = {"players": [' ']}
+            
+        // }
+        
+
+        // console.log(players)
+
+        const responseupdate = await axios.put("https://roleforge-api.onrender.com/campaigns/" + idcamp, players);
+
+        console.log(responseupdate)
+
+        Alert.alert("SUCESSO", "Você foi removido da campanha")
+
+        Campanha()
+
+    }
+
 
     return(
 
         <ScrollView style={styles.scrollView}>
 
             <View style={styles.container}>
-                <Text style={styles.texTitulo}>Campanhas que Participa</Text>
 
                 {dados.map((item, index) => (
 
@@ -54,7 +89,7 @@ const PartCampanha = ({navigation}) => {
                             VER CAMPANHA
                         </Button>
 
-                        <Button style={styles.buttonCardG} mode="contained" onPress={() => console.log(item.id)}>
+                        <Button style={styles.buttonCardG} mode="contained" onPress={() => abandonar(item.id)}>
                             ABANDONAR CAMPANHA
                         </Button>
 

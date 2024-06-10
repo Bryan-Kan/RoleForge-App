@@ -85,11 +85,11 @@ const Login = () => {
                 <Text style = {styles.botaoText}>Login</Text>
             </TouchableOpacity>
 
-            <Text 
+            {/* <Text 
             onPress={() => {navigation.navigate("Cadastro")}}
             style= {styles.texLink}>
                 Esqueci minha senha
-            </Text>
+            </Text> */}
 
             <Text 
             onPress={() => {navigation.navigate("Cadastro")}}
