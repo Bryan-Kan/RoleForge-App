@@ -63,6 +63,8 @@ const Login = () => {
                 style = {styles.logo}
             />
 
+            <Text style={styles.texTitulo}>RoleForge</Text>
+
             <TextInput 
                 value={email}
                 onChangeText={texto => setEmail(texto)}
