@@ -60,7 +60,7 @@ const ListaPersonagem = ({navigation}) => {
 
                     <View style={styles.card} key={index}>
 
-                        <Card>
+                        <Card style={styles.card_sub}>
                             <Card.Content>
                             <Title style={styles.titleCard}>{"Pesonagem " + index}</Title>
                             <Title style={styles.titleCard}>{"Campanha: " +item.campaign['name']}</Title>

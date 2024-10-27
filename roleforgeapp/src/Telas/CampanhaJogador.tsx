@@ -36,7 +36,7 @@ const CampanhaJogador = ({navigation}) => {
 
             <View style={styles.card}>
 
-              <Card>
+              <Card style={styles.card_sub}>
                 <Card.Content>
                 <Title style={styles.titleCard}>Descrição</Title>
                 <Paragraph style={styles.descricaoCard}>{inf.description}</Paragraph>

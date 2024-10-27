@@ -56,7 +56,7 @@ const SuasCampanhas = ({navigation}) => {
         {campa.map((item, index) => (
           <View style={styles.card} key={index}>
 
-            <Card>
+            <Card style={styles.card_sub}>
               <Card.Content>
                 <Title style={styles.titleCard}>{item.name}</Title>
                 <Paragraph style={styles.descricaoCard}>{item.description}</Paragraph>
@@ -65,7 +65,7 @@ const SuasCampanhas = ({navigation}) => {
 
             <View style={styles.buttonContainerCard}>
               <Button style={styles.buttonCard} mode="contained" onPress={() => irCampanha(item.id)}>
-                CAMPANHA
+                VER
               </Button>
               <Button style={styles.buttonCard} mode="contained" onPress={() => deletar(item.id, item.name)}>
                 APAGAR

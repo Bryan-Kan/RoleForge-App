@@ -57,34 +57,36 @@ const Login = () => {
     }
 
     return(
-        <View style ={styles.containerCentro}>
+        <View style ={styles.containerCentro_login}>
             <Image 
                 source={require('../assets/Mestre.jpg')}
-                style = {styles.logo}
+                style = {styles.logo_login}
             />
 
-            <Text style={styles.texTitulo}>RoleForge</Text>
+            <Text style={styles.texTitulo_login}>RoleForge</Text>
 
             <TextInput 
                 value={email}
                 onChangeText={texto => setEmail(texto)}
-                style={styles.input}
+                style={styles.input_login}
                 placeholder="Digite seu E-mail"
+                placeholderTextColor="#FFFFFF"
             />
 
             <TextInput
                 value={password}
                 onChangeText={texto => setPassword(texto)}
-                style={styles.input} 
+                style={styles.input_login} 
                 secureTextEntry={true}
                 placeholder="Digite sua senha"
+                placeholderTextColor="#FFFFFF"
             />
 
             <TouchableOpacity
-                style = {styles.botao}
+                style = {styles.botao_login}
                 onPress={()=>{singUp()}}
             >
-                <Text style = {styles.botaoText}>Login</Text>
+                <Text style = {styles.botaoText_login}>Login</Text>
             </TouchableOpacity>
 
             {/* <Text 
@@ -95,7 +97,7 @@ const Login = () => {
 
             <Text 
             onPress={() => {navigation.navigate("Cadastro")}}
-            style= {styles.texLink}>
+            style= {styles.texLink_login}>
                 Faça o Cadastro
             </Text>
 

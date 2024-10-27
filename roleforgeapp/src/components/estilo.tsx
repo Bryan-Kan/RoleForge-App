@@ -2,42 +2,205 @@ import { StyleSheet } from "react-native"
 import { ScrollView } from "react-native-gesture-handler";
 
 const styles = StyleSheet.create({
-    scrollView: {
-        flex: 1,
-        backgroundColor: "#4682B4",
-        // justifyContent: 'flex-start',
-        // alignItems: 'center',
-    },
 
-    container: {
-        flex: 1,
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        backgroundColor: '#4682B4',
-    },
+    //Cadastro e Login
 
-    containerCentro:{
+    containerCentro_login: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#4682B4',
+        backgroundColor: '#3B3B3B',
+        padding: 20,
+    },
+
+    logo_login: {
+        width: 150,
+        height: 150,
+        marginBottom: 20,
+        borderRadius: 50,
+        borderWidth: 3,
+        borderColor: '#FFD700',
+    },
+
+    texTitulo_login: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        color: '#FFD700',
+        marginBottom: 20,
+        fontFamily: 'Garamond',
+    },
+
+    input_login: {
+        height: 50,
+        width: '100%',
+        borderColor: '#FFD700',
+        borderWidth: 2,
+        borderRadius: 10,
+        padding: 10,
+        backgroundColor: '#4B3D33',
+        color: '#FFFFFF',
+        marginBottom: 15,
+        fontSize: 16,
+    },
+
+    botao_login: {
+        backgroundColor: '#8B4513',
+        padding: 15,
+        borderRadius: 10,
+        width: '100%',
+        alignItems: 'center',
+        borderWidth: 2,
+        borderColor: '#FFD700',
+    },
+
+    botaoText_login: {
+        color: '#FFFFFF',
+        fontSize: 18,
+        fontWeight: 'bold',
+        fontFamily: 'Garamond',
+    },
+
+    texLink_login: {
+        color: '#FFD700',
+        marginTop: 10,
+        fontFamily: 'Garamond',
+        textDecorationLine: 'underline',
+    },
+
+    //Cadastro e Login
+
+    //Outras telas
+
+    containerCentro: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#2E2E2E',
+        padding: 20,
+    },
+
+    texTitulo: {
+        fontSize: 32,
+        fontWeight: 'bold',
+        color: '#FFD700',
+        marginBottom: 40,
+        fontFamily: 'Garamond',
+        textAlign: 'center',
+    },
+
+    botao: {
+        backgroundColor: '#8B4513',
+        padding: 15,
+        borderRadius: 10,
+        width: '100%',
+        alignItems: 'center',
+        borderWidth: 2,
+        borderColor: '#FFD700',
+        marginBottom: 15,
+    },
+
+    botaoText: {
+        color: '#FFFFFF',
+        fontSize: 18,
+        fontWeight: 'bold',
+        fontFamily: 'Garamond',
     },
 
     logo: {
         width: 150,
         height: 150,
-        borderRadius: 100,
+        marginBottom: 20,
+        borderRadius: 50,
+        borderWidth: 3,
+        borderColor: '#FFD700',
     },
 
-    input: {
-        marginTop: 10,
-        padding: 10,
-        width: 300,
-        backgroundColor: '#fff',
-        fontSize: 16,
-        fontWeight: 'bold',
-        borderRadius: 3,
+    //Outras telas
+
+    //Fichas
+
+    scrollView: {
+        backgroundColor: '#2E2E2E', // Fundo escuro
     },
+
+    container: {
+        flex: 1,
+        padding: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    cardFicha: {
+        width: '100%',
+        marginBottom: 20,
+    },
+
+    cardFichaInter: {
+        backgroundColor: '#4B3D33', // Fundo do card
+        borderRadius: 10,
+        borderWidth: 2,
+        borderColor: '#FFD700', // Borda dourada
+    },
+
+    titleCard: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '#FFD700',
+        fontFamily: 'Garamond',
+    },
+
+    subTitleCard: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#FFD700',
+        marginTop: 20,
+        fontFamily: 'Garamond',
+    },
+
+    fichaInput: {
+        height: 50,
+        width: '100%',
+        borderColor: '#FFD700',
+        borderWidth: 2,
+        borderRadius: 10,
+        padding: 10,
+        backgroundColor: '#a5a5a5', // Fundo dos inputs
+        color: '#FFFFFF', // Cor do texto
+        marginBottom: 15,
+        fontSize: 16,
+    },
+
+    buttonCardG: {
+        backgroundColor: '#8B4513', // Marrom
+        borderRadius: 10,
+        padding: 10,
+        marginTop: 20,
+        width: '100%',
+    },
+
+    buttonText: {
+        color: '#FFFFFF',
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        fontFamily: 'Garamond',
+    },
+
+    descricaoCard: {
+        color: '#FFFFFF', // Cor do texto
+        marginBottom: 20,
+        fontSize: 16,
+    },
+
+    texDelete: {
+        color: '#FF4500', // Vermelho para deletar
+    },
+
+    //Fichas
+
+    //teste
+
+    //teste
 
     textoIcon: {
         fontSize: 16,
@@ -45,44 +208,8 @@ const styles = StyleSheet.create({
         color: '#fff',
     },
 
-    texTitulo: {
-        marginTop: 10,
-        fontSize: 30,
-        fontWeight: 'bold',
-        color: '#fff',
-    },
 
     //BOTÃO
-
-    botao: {
-        width:300,
-        height: 42,
-        backgroundColor: '#3498db',
-        marginTop: 10,
-        borderRadius: 4,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-
-    botaoText: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: '#fff',
-    },
-
-    texLink: {
-        marginTop: 10,
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: '#fff',
-    },
-
-    texDelete: {
-        marginTop: 10,
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: '#800000',
-    },
 
     Contebotao: {
         width: 60,
@@ -97,7 +224,9 @@ const styles = StyleSheet.create({
     //CARD
 
     card: {
-        backgroundColor: '#fff',
+        backgroundColor: '#4B3D33',
+        borderWidth: 2,
+        borderColor: '#FFD700',
         borderRadius: 8,
         padding: 16,
         margin: 8,
@@ -112,64 +241,11 @@ const styles = StyleSheet.create({
         elevation: 4,
     },
 
-    cardFicha: {
-        backgroundColor: '#fff',
-        borderRadius: 0,
-        padding: 16,
-        margin: 8,
-        width: "90%",
-        shadowColor: '#000',
-        shadowOpacity: 0.2,
-        shadowRadius: 4,
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        elevation: 4,
-    },
-
-    cardFichaInter: {
-        backgroundColor: '#fff',
-        borderRadius: 20,
-        borderColor: "black",
-        borderWidth: 5,
-    },
-
-    fichaInput: {
-        backgroundColor: "#87CEEB",
-        borderRadius: 10,
-        fontSize: 18,
-        minHeight: 40 ,
-        fontWeight: 'bold',
-        borderColor: "black",
-        borderBottomWidth: 3,
-        marginBottom: 5,
-        marginTop: 5,
-    },
-    
-    titleCard: {
-        backgroundColor: "#A9A9A9",
-        borderRadius: 5,
-        fontSize: 25,
-        fontWeight: 'bold',
-        marginBottom: 8,
-    },
-
-    subTitleCard: {
-        backgroundColor: "#A9A9A9",
-        borderRadius: 20,
-        fontSize: 20,
-        fontWeight: 'bold',
-        marginBottom: 8,
-        textAlign: "center",
-    },
-
-    descricaoCard:{
-        minHeight: 50,
-        backgroundColor: "#A9A9A9",
-        borderRadius: 0,
-        fontSize: 15,
-        marginBottom: 8,
+    card_sub: {
+        backgroundColor: '#4B3D33',
+        borderWidth: 2,
+        borderColor: '#FFD700',
+        borderRadius: 8,
     },
 
     textoCard:{
@@ -185,21 +261,8 @@ const styles = StyleSheet.create({
     buttonCard: {
         width: '45%',
         borderRadius: 5,
-        backgroundColor: "#4169E1",
         marginTop: 8,
-    },
-
-    buttonCardG: {
-        borderRadius: 5,
-        backgroundColor: "#4169E1",
-        marginHorizontal: 20,
-        marginTop: 8,
-    },
-
-    buttonText: {
-        marginTop: 10,
-        fontWeight: 'bold',
-        color: '#fff',
+        backgroundColor: '#8B4513',
     },
 
     buttonContainerCard: {

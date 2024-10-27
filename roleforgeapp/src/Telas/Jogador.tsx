@@ -1,11 +1,17 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import styles from "../components/estilo";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Jogador = ({navigation}) => {
     return(
         <View style={styles.containerCentro}>
+
+            <Image 
+                source={require('../assets/Mestre.jpg')}
+                style = {styles.logo}
+            />
+
             <Text style={styles.texTitulo}>Jogador</Text>
 
             <TouchableOpacity

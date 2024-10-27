@@ -73,7 +73,7 @@ const AcheCampanha = () => {
 
                     <View style={styles.card} key={index}>
 
-                        <Card>
+                        <Card style={styles.card_sub}>
                             <Card.Content>
                             <Title style={styles.titleCard}>{item.name}</Title>
                             <Paragraph style={styles.descricaoCard}>{item.description}</Paragraph>
