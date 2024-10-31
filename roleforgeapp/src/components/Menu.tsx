@@ -1,5 +1,6 @@
 import React from "react";
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import styles from "../components/estilo";
 
 import Home from "../Telas/Home";
 import Mestre from "../Telas/Mestre";
@@ -11,7 +12,14 @@ export default function Menu() {
   return (
     <Drawer.Navigator 
       screenOptions={{
-        headerTitleStyle: { textTransform: 'uppercase' } // Aplica as opções comuns para todas as telas
+        headerStyle: styles.headerStyle_drawner, // Estilo do cabeçalho
+        headerTitleStyle: styles.headerTitleStyle_drawner,
+        drawerLabelStyle: styles.drawerLabelStyle, // Estilo das labels do Drawer
+        drawerStyle: {
+          backgroundColor: 'rgba(139, 69, 19, 0.8)', // Fundo claro
+          borderRightWidth: 2,
+          borderRightColor: '#FFD700', // Borda dourada
+        },
       }}
     >
       <Drawer.Screen name="Home" component={Home} />

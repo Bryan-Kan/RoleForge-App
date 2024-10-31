@@ -18,6 +18,7 @@ import ListaPersonagem from './src/Telas/ListaPersonagem';
 import AbrirFicha from './src/Telas/AbrirFicha';
 import EditarPersonagem from './src/Telas/EditarPersonagem';
 import MudarNome from './src/Telas/MudarNome';
+import styles from './src/components/estilo';
 
 const Stack = createNativeStackNavigator();
 
@@ -55,29 +56,77 @@ const App = () => {
 
           <Stack.Screen name="Menu" component={Menu}  options={{ headerShown: false }}/>
 
-          <Stack.Screen name="Criar Campanha" component={CriaCampanha}/>
+          <Stack.Screen name="Criar Campanha" component={CriaCampanha} options={{
+            headerStyle: styles.headerStyle,
+            headerTintColor: '#FFD700', // Dourado
+            headerTitleStyle: styles.headerTitleStyle,
+          }}/>
 
-          <Stack.Screen name="Suas Campanhas" component={SuasCampanhas}/>
+          <Stack.Screen name="Suas Campanhas" component={SuasCampanhas} options={{
+            headerStyle: styles.headerStyle,
+            headerTintColor: '#FFD700', // Dourado
+            headerTitleStyle: styles.headerTitleStyle,
+          }}/>
 
-          <Stack.Screen name='Ache uma Campanha' component={AcheCampanha}/>
+          <Stack.Screen name='Ache uma Campanha' component={AcheCampanha} options={{
+            headerStyle: styles.headerStyle,
+            headerTintColor: '#FFD700', // Dourado
+            headerTitleStyle: styles.headerTitleStyle,
+          }}/>
 
-          <Stack.Screen name='Campanhas que Participa' component={PartCampanha}/>
+          <Stack.Screen name='Campanhas que Participa' component={PartCampanha} options={{
+            headerStyle: styles.headerStyle,
+            headerTintColor: '#FFD700', // Dourado
+            headerTitleStyle: styles.headerTitleStyle,
+          }}/>
 
-          <Stack.Screen name='Editar Ficha' component={EditarFicha}/>
+          <Stack.Screen name='Editar Ficha' component={EditarFicha} options={{
+            headerStyle: styles.headerStyle,
+            headerTintColor: '#FFD700', // Dourado
+            headerTitleStyle: styles.headerTitleStyle,
+          }}/>
 
-          <Stack.Screen name='Campanha Mestre' component={CampanhaMestre}/>
+          <Stack.Screen name='Campanha Mestre' component={CampanhaMestre} options={{
+            headerStyle: styles.headerStyle,
+            headerTintColor: '#FFD700', // Dourado
+            headerTitleStyle: styles.headerTitleStyle,
+          }}/>
 
-          <Stack.Screen name='Criar Personagem' component={CriaPersonagem}/>
+          <Stack.Screen name='Criar Personagem' component={CriaPersonagem} options={{
+            headerStyle: styles.headerStyle,
+            headerTintColor: '#FFD700', // Dourado
+            headerTitleStyle: styles.headerTitleStyle,
+          }}/>
 
-          <Stack.Screen name='Campanha Jogador' component={CampanhaJogador}/>
+          <Stack.Screen name='Campanha Jogador' component={CampanhaJogador} options={{
+            headerStyle: styles.headerStyle,
+            headerTintColor: '#FFD700', // Dourado
+            headerTitleStyle: styles.headerTitleStyle,
+          }}/>
 
-          <Stack.Screen name='Lista de Personagem' component={ListaPersonagem}/>
+          <Stack.Screen name='Lista de Personagem' component={ListaPersonagem} options={{
+            headerStyle: styles.headerStyle,
+            headerTintColor: '#FFD700', // Dourado
+            headerTitleStyle: styles.headerTitleStyle,
+          }}/>
 
-          <Stack.Screen name='Ficha do Personagem' component={AbrirFicha}/>
+          <Stack.Screen name='Ficha do Personagem' component={AbrirFicha} options={{
+            headerStyle: styles.headerStyle,
+            headerTintColor: '#FFD700', // Dourado
+            headerTitleStyle: styles.headerTitleStyle,
+          }}/>
 
-          <Stack.Screen name='Editar o Personagem' component={EditarPersonagem}/>
+          <Stack.Screen name='Editar o Personagem' component={EditarPersonagem} options={{
+            headerStyle: styles.headerStyle,
+            headerTintColor: '#FFD700', // Dourado
+            headerTitleStyle: styles.headerTitleStyle,
+          }}/>
 
-          <Stack.Screen name='Mudar o Nome' component={MudarNome}/>
+          <Stack.Screen name='Mudar o Nome' component={MudarNome} options={{
+            headerStyle: styles.headerStyle,
+            headerTintColor: '#FFD700', // Dourado
+            headerTitleStyle: styles.headerTitleStyle,
+          }}/>
 
         </Stack.Navigator>
       </NavigationContainer>

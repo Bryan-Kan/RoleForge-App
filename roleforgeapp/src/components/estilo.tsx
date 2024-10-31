@@ -3,6 +3,55 @@ import { ScrollView } from "react-native-gesture-handler";
 
 const styles = StyleSheet.create({
 
+    //Drawner
+
+    drawerStyle: {
+      backgroundColor: '#F5F5DC', // Fundo claro
+      borderRightWidth: 2,
+      borderRightColor: '#FFD700', // Borda dourada
+    },
+    drawerLabelStyle: {
+      color: '#FFD700', // Marrom
+      fontSize: 18,
+      fontFamily: 'Georgia',
+    },
+    headerStyle_drawner: {
+      backgroundColor: '#8B4513', // Marrom
+    },
+    headerTitleStyle_drawner: {
+      color: '#FFD700', // Dourado
+      textTransform: 'uppercase',
+      fontSize: 24,
+      fontFamily: 'Georgia-Bold',
+    },
+
+    //Drawner
+
+    //Header
+
+    headerStyle: {
+      backgroundColor: '#8B4513', // Marrom
+      padding: 10,
+    },
+    headerTitleStyle: {
+      color: '#FFD700', // Dourado
+      fontSize: 24,
+      fontFamily: 'Georgia-Bold',
+    },
+    screenContainer: {
+      flex: 1,
+      backgroundColor: '#F5F5DC', // Fundo claro
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    screenText: {
+      color: '#8B4513', // Marrom
+      fontSize: 18,
+      fontFamily: 'Georgia',
+    },
+
+    //header
+
     //Cadastro e Login
 
     containerCentro_login: {

@@ -17,8 +17,8 @@ const Login = () => {
     async function infoUser() {
         try {
           const usuario = await axios.get('https://roleforge-api.onrender.com/users/email/'+ email);
-          setEmail(usuario.data)
-          setUser({ id: usuario.data["id"], nome: usuario.data["name"], email: usuario.data["email"], campanha: 'teste' });
+          setEmail(usuario.data["email"])
+          setUser({ id: usuario.data["id"], nome: usuario.data["name"], email: usuario.data["email"], campanha: "" });
         //   console.log(user)
         //   console.log('Resposta:', usuario.data);
         } catch (error) {
@@ -41,8 +41,19 @@ const Login = () => {
                 setPassword("");
             })
             .catch(err => {
+
+                let errorMessage;
+
+                if (err.code === 'auth/invalid-credential') {
+                    errorMessage = "As credenciais fornecidas estão incorretas ou malformadas.";
+                } else if (err.code === 'auth/invalid-email') {
+                    errorMessage = "O endereço de e-mail está mal formatado.";
+                } else {
+                    errorMessage = "Ocorreu um erro desconhecido.";
+                }
+
                 console.log(err)
-                Alert.alert("Erro", err.nativeErrormessage)
+                Alert.alert("Erro",  errorMessage)
 
                 setEmail("");
                 setPassword("");
