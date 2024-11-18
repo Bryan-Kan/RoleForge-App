@@ -40,7 +40,7 @@ const MudarNome = () => {
                     <Card.Content>
 
                         <Title style={styles.titleCard}>Nome Atual</Title>
-                        <Paragraph style={styles.textoCard}>{user?.nome}</Paragraph>
+                        <Paragraph style={styles.fichaInput}>{user?.nome}</Paragraph>
                         <TextInput style={styles.fichaInput} placeholder="Coloque o nome aqui" value={nome} onChangeText={setNome}/>
 
                     </Card.Content>
