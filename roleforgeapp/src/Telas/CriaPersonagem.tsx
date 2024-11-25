@@ -80,7 +80,6 @@ const CriaPersonagem = () => {
 
         Alert.alert("SUCESSO","Personagem criado com sucesso")
 
-        console.log(dados)
     }
 
 

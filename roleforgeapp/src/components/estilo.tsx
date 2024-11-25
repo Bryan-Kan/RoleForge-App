@@ -214,7 +214,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         padding: 10,
         backgroundColor: '#a5a5a5', // Fundo dos inputs
-        color: '#FFFFFF', // Cor do texto
+        color: 'black', // Cor do texto
         marginBottom: 15,
         fontSize: 16,
     },

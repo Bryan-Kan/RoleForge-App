@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { View, Text, ScrollView } from "react-native";
 import styles from "../components/estilo";
 import { Button, Card, Paragraph, Title } from "react-native-paper";
 import axios from "axios";
 import { useUser } from "../components/usuario";
+import { useFocusEffect } from "@react-navigation/native";
 
 const CampanhaMestre = ({navigation}) => {
 
     const { user, setUser } = useUser();
     const [inf, setInf] = useState(null);
 
-    useEffect(() => {
-      minhaCampanha();
-    }, []);
+    useFocusEffect(
+      useCallback(() => {
+        minhaCampanha();
+      }, [])
+    );
     
     async function minhaCampanha() {
       try {

@@ -19,11 +19,7 @@ const MudarNome = () => {
 
         Alert.alert("SUCESSO", "Nome alterado para " + nome)
 
-        console.log(response)
-
         const nomenovo = await axios.get('https://roleforge-api.onrender.com/users/'+ user?.id)
-
-        console.log(nomenovo.data)
 
         setUser({ id: nomenovo.data["id"], nome: nomenovo.data["name"], email: nomenovo.data["email"], campanha: 'teste' });
 

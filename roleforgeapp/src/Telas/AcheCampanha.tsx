@@ -16,9 +16,49 @@ const AcheCampanha = () => {
 
     async function dadoCampanha() {
 
-        const response = await axios.get("https://roleforge-api.onrender.com/campaigns/");
+        try {
+            const response = await axios.get("https://roleforge-api.onrender.com/campaigns/");
 
-        setDados(response.data)
+            setDados(response.data)
+        } catch (error) {
+            if (error.response) {
+              // Erros de resposta do servidor (códigos 4xx e 5xx)
+              // console.error("Erro na resposta do servidor:", error.response.data);
+              // console.error("Status:", error.response.status);
+              // console.error("Cabeçalhos:", error.response.headers);
+        
+              if (error.response.status === 404) {
+                Alert.alert(
+                  "Campanhas não encontradas",
+                  "Não encontramos nenhuma campanha."
+                );
+              } else if (error.response.status === 500) {
+                Alert.alert(
+                  "Erro no servidor",
+                  "Ocorreu um problema no servidor. Tente novamente mais tarde."
+                );
+              } else {
+                Alert.alert(
+                  "Erro desconhecido",
+                  `Algo deu errado: ${error.response.data?.message || "Erro inesperado."}`
+                );
+              }
+            } else if (error.request) {
+              // Nenhuma resposta recebida (problemas de conectividade, por exemplo)
+            //   console.error("Nenhuma resposta recebida:", error.request);
+              Alert.alert(
+                "Erro de conexão",
+                "Não foi possível conectar ao servidor. Verifique sua conexão com a internet."
+              );
+            } else {
+              // Erros ao configurar a solicitação
+            //   console.error("Erro ao configurar a solicitação:", error.message);
+              Alert.alert(
+                "Erro",
+                `Ocorreu um erro ao preparar a solicitação: ${error.message}`
+              );
+            }
+        }
         
     }
 
@@ -69,25 +109,33 @@ const AcheCampanha = () => {
             <View style={styles.container}>
                 <Text style={styles.texTitulo}>Ache uma Campanha</Text>
 
-                {dados.map((item, index) => (
+                {dados && dados.length > 0 ? (
+                    // Renderizar as campanhas se existirem
+                    dados.map((item, index) => (
 
-                    <View style={styles.card} key={index}>
+                        <View style={styles.card} key={index}>
+    
+                            <Card style={styles.card_sub}>
+                                <Card.Content>
+                                <Title style={styles.titleCard}>{item.name}</Title>
+                                <Paragraph style={styles.descricaoCard}>{item.description}</Paragraph>
+                                </Card.Content>
+                            </Card>
+    
+                            <Button style={styles.buttonCardG} mode="contained" onPress={() => entrarCamp(item.id)}>
+                                PARTICIPAR
+                            </Button>
+    
+                        </View>
+    
+    
+                    ))
 
-                        <Card style={styles.card_sub}>
-                            <Card.Content>
-                            <Title style={styles.titleCard}>{item.name}</Title>
-                            <Paragraph style={styles.descricaoCard}>{item.description}</Paragraph>
-                            </Card.Content>
-                        </Card>
-
-                        <Button style={styles.buttonCardG} mode="contained" onPress={() => entrarCamp(item.id)}>
-                            PARTICIPAR
-                        </Button>
-
-                    </View>
-
-
-                ))}
+                ) : (
+                <Text style={styles.titleCard}>
+                    Nenhuma Campanha Encontrada
+                </Text>
+                )}
 
             </View>
 
